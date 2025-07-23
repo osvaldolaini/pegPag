@@ -1,44 +1,41 @@
 <?php
 
-namespace App\Livewire\Admin\Users;
+namespace Modules\Products\App\Livewire\Admin;
 
-use App\Enums\UserGroups as EnumsUserGroups;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Illuminate\Validation\Rule;
 use Livewire\WithPagination;
 
+use Modules\Products\App\Models\Product;
+
+
 use App\Services\LaiGuz\TableService; // Importe o serviço refatorado
 
-class UserList extends Component
+class ProductList extends Component
 {
-    use WithPagination;
+    public $modal = true;
     public $showJetModal = false;
     public $showModalView = false;
+    public $showModalForm = false;
     public $alertSession = false;
     public $rules;
     public $detail;
-
-    public $id;
     public $registerId;
-
-    protected $listeners =
-    [
-        'showModalRead',
-        'showModalDelete'
-    ];
+    public $id;
+    public $breadcrumb = 'Produtos';
+    public $product;
 
     // Propriedades do Livewire, que podem ser bindadas ao front-end
-    public string $model = "App\Models\User";
-    public string $modelId = "id"; // 'id' ou 'peoples.id'
+    public string $model = "Modules\Products\App\Models\Product";
+    public string $modelId = "id"; // 'id' ou 'Products.id'
     public ?string $search = null; // Termo de busca
-    public array $sorts = ['name' => 'asc']; // Ordenação
+    public array $sorts = ['title' => 'asc']; // Ordenação
     public ?string $relationTables = null; // String de joins
     public ?array $customSearch = null; // Mapeamento de busca customizada
-    public string $columnsInclude = 'name,active as status';
-    public string $searchableColumns = 'name'; // Colunas pesquisáveis
+    public string $columnsInclude = 'title,value,logo_path,active as status';
+    public string $searchableColumns = 'title,value'; // Colunas pesquisáveis
 
     public int $paginate = 15; // Itens por página
     public string $activeColumnName = 'active'; // Coluna de ativo/inativo
@@ -59,18 +56,6 @@ class UserList extends Component
         $this->resetPage();
     }
 
-    public function addSort($field)
-    {
-        // dd($field);
-        if (isset($this->sorts[$field])) {
-            $this->sorts[$field] = $this->sorts[$field] === 'asc' ? 'desc' : 'asc';
-        } else {
-            $this->sorts = [];
-            $this->sorts[$field] = '';
-            $this->sorts[$field] = 'asc';
-        }
-        // dd($this->sorts);
-    }
 
     public function render(TableService $queryService)
     {
@@ -98,19 +83,44 @@ class UserList extends Component
             ->get();
 
         return view(
-            'livewire.admin.users.user-list',
+            'products::admin.product-list',
             compact('dataTable')
         );
     }
 
+    public function addSort($field)
+    {
+        // dd($field);
+        if (isset($this->sorts[$field])) {
+            $this->sorts[$field] = $this->sorts[$field] === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sorts = [];
+            $this->sorts[$field] = '';
+            $this->sorts[$field] = 'asc';
+        }
+        // dd($this->sorts);
+    }
 
     //CREATE
-    public function showModal($id = false)
+    public function showCreate()
     {
-        if ($id) {
-            redirect()->route('user-edit', $id);
+        if ($this->modal) {
+            $this->showModalForm = true;
+            $this->product = '';
         } else {
-            redirect()->route('user-create');
+            redirect()->route('products.product-create');
+        }
+    }
+
+    //Update
+    public function showUpdate($id)
+    {
+
+        if ($this->modal) {
+            $this->showModalForm = true;
+            $this->product = Product::find($id);
+        } else {
+            redirect()->route('products.product-edit', $id);
         }
     }
 
@@ -119,26 +129,37 @@ class UserList extends Component
     {
         $this->showJetModal = true;
         if (isset($id)) {
-            $this->registerId = $id;
+            $this->id = $id;
         } else {
-            $this->registerId = '';
+            $this->id = '';
         }
     }
     public function delete($id)
     {
-        $data = User::find($id);
-        $data->delete();
+        $data = Product::where('id', $id)->first();
+        $data->active = 0;
+        $data->save();
 
         $this->openAlert('success', 'Registro excluido com sucesso.');
 
         $this->showJetModal = false;
     }
-
-    //OPEN MESSAGE
-    //pega o status do registro
+    //ACTIVE
+    public function buttonActive($id)
+    {
+        $data = Product::where('id', $id)->first();
+        if ($data->active == 1) {
+            $data->active = 0;
+            $data->save();
+        } else {
+            $data->active = 1;
+            $data->save();
+        }
+        $this->openAlert('success', 'Registro atualizado com sucesso.');
+    }
+    //MESSAGE
     public function openAlert($status, $msg)
     {
         $this->dispatch('openAlert', $status, $msg);
     }
-    #END FUNCTIONS BUTTONS AND MESSAGE
 }

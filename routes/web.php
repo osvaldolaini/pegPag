@@ -34,7 +34,7 @@ Route::middleware([
 Route::middleware([
     'auth',
     'verified'
-])->group(function () {
+])->prefix('admin/cadastros')->group(function () {
     Route::get('/cadastros/usuários', UserList::class)
         ->name('users-list');
     Route::get('/cadastros/usuários/novo', UserForm::class)

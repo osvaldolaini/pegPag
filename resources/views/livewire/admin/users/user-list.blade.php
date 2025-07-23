@@ -8,7 +8,20 @@
             </div>
         </div>
     </x-layouts.admin.breadcrumb>
-    <div class="flex flex-col items-center justify-between px-4 mt-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+    <x-layouts.admin.search.block>
+        <x-slot name="button">
+            <button wire:click="showCreate()"
+                class="flex items-center justify-center p-3 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg lg:px-5 sm:w-auto gap-x-2 hover:bg-blue-600 dark:hover:bg-blue-500 dark:bg-blue-600">
+                <svg class="w-4 h-4 mr-0 lg:mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path clip-rule="evenodd" fill-rule="evenodd"
+                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
+                </svg>
+                <span class="">Novo </span>
+            </button>
+        </x-slot>
+    </x-layouts.admin.search.block>
+    {{-- <div class="flex flex-col items-center justify-between px-4 mt-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
         <div
             class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
             <div class="flex group ">
@@ -23,7 +36,7 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="my-6 bg-white dark:bg-gray-800 sm:rounded-lg">
         <div class="-mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full align-middle md:px-6 lg:px-8">
@@ -54,7 +67,7 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                            @foreach ($users as $user)
+                            @foreach ($dataTable as $user)
                                 <tr>
                                     <td
                                         class="py-1.5 px-4 text-sm font-normal  text-left text-gray-500 dark:text-gray-400">
@@ -93,7 +106,32 @@
                                                         </svg>
                                                     </button>
                                                 </div>
-
+                                                {{-- <div class="p-0 tooltip tooltip-top" data-tip="Acessos">
+                                                    <a href="{{ route('user.access', $user->id) }}"
+                                                        class="flex px-3 py-2 -ml-1 transition-colors duration-200 dark:hover:bg-teal-500 hover:hover:bg-teal-500 hover:text-white">
+                                                        <svg class="w-6 h-6" viewBox="0 -1.5 20.412 20.412"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <g id="check-lists" transform="translate(-1.588 -2.588)">
+                                                                <path id="primary" d="M7,4,4.33,7,3,5.5"
+                                                                    fill="none" stroke="currentColor"
+                                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" />
+                                                                <path id="primary-2" data-name="primary"
+                                                                    d="M3,11.5,4.33,13,7,10" fill="none"
+                                                                    stroke="currentColor" stroke-linecap="round"
+                                                                    stroke-linejoin="round" stroke-width="2" />
+                                                                <path id="primary-3" data-name="primary"
+                                                                    d="M3,17.5,4.33,19,7,16" fill="none"
+                                                                    stroke="currentColor" stroke-linecap="round"
+                                                                    stroke-linejoin="round" stroke-width="2" />
+                                                                <path id="primary-4" data-name="primary"
+                                                                    d="M11,6H21M11,12H21M11,18H21" fill="none"
+                                                                    stroke="currentColor" stroke-linecap="round"
+                                                                    stroke-linejoin="round" stroke-width="2" />
+                                                            </g>
+                                                        </svg>
+                                                    </a>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </td>
@@ -121,9 +159,9 @@
         </x-slot>
 
         <x-slot name="footer">
-            <button class="btn btn-secondary" wire:click="$toggle('showJetModal')" wire:loading.attr="disabled">
+            <button wire:click="$toggle('showJetModal')" wire:loading.attr="disabled">
                 Cancelar
-            </button >
+            </button>
 
             <button class="ml-2 btn btn-error" wire:click="delete({{ $registerId }})" wire:loading.attr="disabled">
                 Apagar registro
@@ -157,7 +195,7 @@
             </dl>
         </x-slot>
         <x-slot name="footer">
-            <button class="btn btn-secondary" wire:click="$toggle('showModalView')" class="mx-2">
+            <button wire:click="$toggle('showModalView')" class="mx-2">
                 Fechar
             </button>
         </x-slot>
