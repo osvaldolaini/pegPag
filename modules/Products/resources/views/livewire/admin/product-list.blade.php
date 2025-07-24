@@ -48,24 +48,13 @@
                     <tr>
                         <td
                             class="relative flex items-center px-4 py-1 space-x-2 text-sm font-normal text-left text-gray-500 dark:text-gray-400">
-
-                            @if ($item->code_image)
+                            @if ($item->logo_path)
                                 <div class="avatar">
                                     <div class="relative w-8 rounded-full cursor-pointer">
                                         <!-- Avatar pequeno -->
-                                        <img @mouseleave="show = false"
-                                            @mouseover="show = true; x = $event.clientX; y = $event.clientY"
-                                            src="{{ url('storage/products/' . $item->id . '/' . $item->code_image . '_list.png') }}"
-                                            alt="{{ $item->name }}">
+                                        <img src="{{ url('storage/products/' . $item->id . '/' . $item->code_image . '_list.png') }}"
+                                            alt="{{ $item->title }}">
                                     </div>
-                                </div>
-
-                                <!-- Foto maior ao passar o mouse -->
-                                <div x-show="show" x-transition.opacity
-                                    class="fixed z-50 w-32 h-32 p-1 bg-white border-2 border-gray-300 rounded-lg shadow-lg"
-                                    :style="'top: ' + (y + 10) + 'px; left: ' + (x + 10) + 'px;'">
-                                    <img src="{{ url('storage/products/' . $item->id . '/' . $item->code_image . '_small.png') }}"
-                                        alt="Foto grande" class="w-full h-full rounded-lg">
                                 </div>
                             @else
                                 <div class="avatar">

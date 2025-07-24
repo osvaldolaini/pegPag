@@ -22,6 +22,7 @@ class Settings extends Model
         'title',
         'acronym',
         'slug',
+        'pix',
         'update_by',
         'logo_path',
         'image',

@@ -9,10 +9,11 @@ use Modules\Products\App\Livewire\Admin\ProductList;
 Route::name('products.')->group(function () {
     // Rotas do módulo Products
 
-    // Página pública
-    Route::get('/produtos', ProductIndex::class)
-        ->name('products');
-
+    // // Página pública
+    Route::middleware(['web'])->group(function () {
+        Route::get('/produtos', ProductIndex::class)
+            ->name('products');
+    });
     // Painel admin (autenticado e verificado)
     Route::middleware(['web', 'auth', 'verified'])->prefix('admin/cadastros')->group(function () {
         // URL: /admin/lista-de-produtos

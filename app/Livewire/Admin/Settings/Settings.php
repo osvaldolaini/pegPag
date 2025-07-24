@@ -52,9 +52,9 @@ class Settings extends Component
     {
         $this->configs = Configs::find(1);
         // dd($this->configs);
-        $this->logo = Storage::directoryExists('public/logos-school');
+        $this->logo = Storage::directoryExists('public/logos-system');
         // if (isset($this->configs->logo_path)) {
-        // $this->logo = 'logos-school/' . $this->configs->logo_path;
+        // $this->logo = 'logos-system/' . $this->configs->logo_path;
         $this->title = $this->configs->title;
         $this->acronym = $this->configs->acronym;
         $this->id = $this->configs->id;
@@ -120,8 +120,8 @@ class Settings extends Component
     {
         $this->configs->logo_path = '';
         $this->configs->save();
-        Storage::deleteDirectory('public/logos-school');
-        Storage::deleteDirectory('public/favicons-school');
+        Storage::deleteDirectory('public/logos-system');
+        Storage::deleteDirectory('public/favicons-system');
         $this->logo = $this->configs->logo_path;
     }
     public function updated($property)
@@ -133,27 +133,27 @@ class Settings extends Component
             ];
 
             $this->validate();
-            if (Storage::directoryMissing('public/logos-school')) {
-                Storage::makeDirectory('public/logos-school', 0755, true, true);
+            if (Storage::directoryMissing('public/logos-system')) {
+                Storage::makeDirectory('public/logos-system', 0755, true, true);
             }
 
             if (isset($this->uploadimage)) {
                 $code = Str::uuid();
                 $new_name = $code . '.png';
 
-                // $path = storage_path('app/public/logos-school');
+                // $path = storage_path('app/public/logos-system');
 
                 // // Verifica se o diretório existe e, se não, cria com permissão 755
                 // if (!file_exists($path)) {
                 //     mkdir($path, 0755, true);
                 // }
 
-                $this->uploadimage->storeAs('logos-school', $new_name, 'public');
+                $this->uploadimage->storeAs('logos-system', $new_name, 'public');
 
                 $this->configs->logo_path = $new_name;
                 $this->configs->save();
 
-                $this->logo('logos-school', $new_name);
+                $this->logo('logos-system', $new_name);
             }
         }
         if ($property === 'postalCode') {
@@ -184,23 +184,23 @@ class Settings extends Component
 
         // $image = ImageManager::imagick()->read('images/example.jpg');
         // save modified image in new format
-        $image->toPng()->save('storage/logos-school/logo.png');
-        $image->toWebp()->save('storage/logos-school/logo.webp');
+        $image->toPng()->save('storage/logos-system/logo.png');
+        $image->toWebp()->save('storage/logos-system/logo.webp');
         $image->scale(width: 300);
         // Logos footer e Header
         $footer = $manager->read($path_file);
         $footer->scale(width: 300);
-        $footer->toPng()->save('storage/logos-school/logo-footer.png');
-        $footer->toWebp()->save('storage/logos-school/logo-footer.webp');
+        $footer->toPng()->save('storage/logos-system/logo-footer.png');
+        $footer->toWebp()->save('storage/logos-system/logo-footer.webp');
 
         $header = $manager->read($path_file);
         $header->scale(width: 130);
-        $header->toPng()->save('storage/logos-school/logo-header.png');
-        $header->toWebp()->save('storage/logos-school/logo-header.webp');
+        $header->toPng()->save('storage/logos-system/logo-header.png');
+        $header->toWebp()->save('storage/logos-system/logo-header.webp');
 
-        if (!Storage::disk('public')->exists('favicons-school')) {
-            Storage::disk('public')->makeDirectory('favicons-school', 0755, true);
-            chmod(storage_path('app/public/favicons-school'), 0755);
+        if (!Storage::disk('public')->exists('favicons-system')) {
+            Storage::disk('public')->makeDirectory('favicons-system', 0755, true);
+            chmod(storage_path('app/public/favicons-system'), 0755);
         }
 
         // Favicons
@@ -237,7 +237,7 @@ class Settings extends Component
         foreach ($sizes as $fav) {
             $favicon = $manager->read($path_file);
             $favicon->scale(width: $fav[0]);
-            $favicon->toPng()->save('storage/favicons-school/' . $fav[1] . '.png');
+            $favicon->toPng()->save('storage/favicons-system/' . $fav[1] . '.png');
         }
     }
 

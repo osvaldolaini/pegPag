@@ -74,12 +74,19 @@ class MakeModules extends Command
 
     protected function getProviderStub($module)
     {
+        $module = Str::studly($this->argument('name'));
+        $table = $this->argument('table') ?? Str::snake(Str::pluralStudly($module));
+        $model = Str::studly(Str::singular($table));
+
+        $moduleLower = Str::lower($model);
+
         return <<<PHP
         <?php
 
         namespace Modules\\{$module};
 
         use Illuminate\Support\ServiceProvider;
+        use Livewire\Livewire;
 
         class {$module}ServiceProvider extends ServiceProvider
         {
@@ -88,6 +95,11 @@ class MakeModules extends Command
                 \$this->loadRoutesFrom(__DIR__.'/routes/web.php');
                 \$this->loadViewsFrom(__DIR__.'/resources/views', strtolower('{$module}'));
                 \$this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
+                Livewire::component('page.{$moduleLower}-index', \Modules\\{$module}\App\Livewire\Page\\{$model}Index::class);
+                Livewire::component('admin.{$moduleLower}-form', \Modules\\{$module}\App\Livewire\Admin\\{$model}Form::class);
+                Livewire::component('admin.{$moduleLower}-edit', \Modules\\{$module}\App\Livewire\Admin\\{$model}Edit::class);
+                Livewire::component('admin.{$moduleLower}-list', \Modules\\{$module}\App\Livewire\Admin\\{$model}List::class);
             }
 
             public function register(): void

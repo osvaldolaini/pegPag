@@ -7,10 +7,15 @@ use App\Livewire\Admin\Users\UserForm;
 use App\Livewire\Admin\Users\UserList;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use Modules\Products\App\Livewire\Page\ProductIndex;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+// Página pública
+// Route::get('/produtos', ProductIndex::class)
+//     ->name('products');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

@@ -21,6 +21,7 @@ class Product extends Model
         'active',
         'value',
         'code',
+        'logo_path',
         'updated_by',
         'created_by',
         'deleted_by',
@@ -75,6 +76,15 @@ class Product extends Model
     {
         if ($this->value != "") {
             return $this->viewValue($this->value);
+        }
+    }
+    public function getCodeImageAttribute()
+    {
+        if ($this->logo_path) {
+            $code  = explode('.', $this->logo_path);
+            return $code[0];
+        } else {
+            return false;
         }
     }
 }
