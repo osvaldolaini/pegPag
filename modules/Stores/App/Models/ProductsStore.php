@@ -1,37 +1,28 @@
 <?php
 
-namespace Modules\Products\App\Models;
+namespace Modules\Stores\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Auth;
+use Modules\Products\App\Models\Product;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-use App\Traits\HasAttributeConversions;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Modules\Stores\App\Models\ProductsStore;
 
-class Product extends Model
+class ProductsStore extends Model
 {
-    use HasFactory, LogsActivity, HasAttributeConversions;
-    protected $table = 'products';
+    use HasFactory, LogsActivity;
+    protected $table = 'products_store';
 
     protected $fillable = [
-        'title',
         'active',
-        'value',
-        'code',
-        'logo_path',
+        'store_id',
+        'product_id',
         'updated_by',
         'created_by',
-        'deleted_by',
-        'deleted_at'
-    ];
-
-    protected $casts = [
-        'value' => 'float',  // Força o grau a ser interpretado como número
     ];
 
     protected static function boot()
@@ -40,7 +31,6 @@ class Product extends Model
 
         static::saving(function ($model) {
             $model->setUpperCaseAttributes([
-                'title',
                 'updated_by',
                 'created_by',
             ]);
@@ -70,28 +60,12 @@ class Product extends Model
             ->logOnly($this->fillable);
     }
 
-    public function setValueAttribute($value)
+    public function store(): BelongsTo
     {
-        $this->attributes['value'] = $this->dbValue($value);
+        return $this->belongsTo(Store::class)->where('active', 1);
     }
-    public function getValueViewAttribute()
+    public function product(): BelongsTo
     {
-        if ($this->value != "") {
-            return $this->viewValue($this->value);
-        }
-    }
-    public function getCodeImageAttribute()
-    {
-        if ($this->logo_path) {
-            $code  = explode('.', $this->logo_path);
-            return $code[0];
-        } else {
-            return false;
-        }
-    }
-
-    public function stores(): HasMany
-    {
-        return $this->hasMany(ProductsStore::class, 'products_id', 'id')->where('active', 1);
+        return $this->belongsTo(Product::class)->where('active', 1);
     }
 }

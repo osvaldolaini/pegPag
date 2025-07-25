@@ -5,6 +5,7 @@ use Modules\Stores\App\Livewire\Page\StoreIndex;
 use Modules\Stores\App\Livewire\Admin\StoreEdit;
 use Modules\Stores\App\Livewire\Admin\StoreForm;
 use Modules\Stores\App\Livewire\Admin\StoreList;
+use Modules\Stores\App\Livewire\Admin\StoreProduct;
 
 // Rotas do módulo Stores
 
@@ -28,6 +29,8 @@ Route::name('stores.')->group(function () {
         // URL: /admin/lojas/{stores}/editar
         // Considere usar {Store} no singular para injeção de modelo, ex: lojas/{Store}/editar
         Route::get('lojas/{stores}/editar', StoreEdit::class)->name('store-edit');
+
+        Route::get('lojas/{stores}/produtos', StoreProduct::class)->name('store-product');
     });
 });
 

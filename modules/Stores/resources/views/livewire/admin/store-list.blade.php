@@ -32,6 +32,10 @@
                     </th>
                     <th scope="col"
                         class="px-4 py-1 text-sm font-normal text-center text-gray-500 dark:text-gray-400">
+                        Produtos
+                    </th>
+                    <th scope="col"
+                        class="px-4 py-1 text-sm font-normal text-center text-gray-500 dark:text-gray-400">
                         Opções
                     </th>
                 </tr>
@@ -63,11 +67,19 @@
                                 {{ $item->title }}
                             </span>
                         </td>
-
+                        <td class="w-1/6 px-4 py-1 text-sm font-normal text-center text-gray-500 dark:text-gray-400">
+                            <div class="p-0 tooltip tooltip-top" data-tip="Produtos">
+                                <a href="{{ route('stores.store-product', $item->id) }}"
+                                    class="flex px-3 py-2 transition-colors duration-200 rounded-sm hover:text-white dark:hover:bg-blue-500 hover:bg-blue-500 whitespace-nowrap">
+                                    <x-svg.products class="ml-2 size-6"></x-svg.products>
+                                </a>
+                            </div>
+                        </td>
                         <td class="w-1/6 px-4 py-1 text-sm font-normal text-center text-gray-500 dark:text-gray-400">
                             <x-layouts.admin.table.table-options id='{{ $item->id }}' active='{{ $item->status }}'>
                             </x-layouts.admin.table.table-options>
                         </td>
+
                     </tr>
                 @endforeach
             </tbody>
