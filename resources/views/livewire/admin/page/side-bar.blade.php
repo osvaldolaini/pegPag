@@ -50,8 +50,16 @@
                             Usuários
                         </x-slot>
                     </x-layouts.admin.side-bar-nav-link>
+                    <x-layouts.admin.side-bar-nav-link url="stores.stores-list" active="*lojas*" access_page="stores">
+                        <x-slot name="svg">
+                            <x-svg.stores class="ml-2 size-6"></x-svg.stores>
+                        </x-slot>
+                        <x-slot name="title">
+                            Lojas
+                        </x-slot>
+                    </x-layouts.admin.side-bar-nav-link>
                     <x-layouts.admin.side-bar-nav-link url="products.products-list" active="*produtos*"
-                        access_page="users">
+                        access_page="products">
                         <x-slot name="svg">
                             <x-svg.products class="ml-2 size-6"></x-svg.products>
 

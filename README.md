@@ -1,5 +1,9 @@
 <p align="center"><a href="https://github.com/osvaldolaini" target="_blank"><img src="https://avatars.githubusercontent.com/u/75580327?v=4" width="100" alt="Laravel Logo"></a></p>
 
+## Módulo produtos 2025-07-24
+
+> CRUD lojas
+
 ## Módulo produtos 2025-07-23
 
 > CRUD produtos

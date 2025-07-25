@@ -1,15 +1,14 @@
 <?php
 
-namespace Modules\Products\App\Livewire\Admin;
+namespace Modules\Stores\App\Livewire\Admin;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-use Modules\Products\App\Models\Product;
-
 use App\Services\LaiGuz\TableService; // Importe o serviço refatorado
+use Modules\Stores\App\Models\Store;
 
-class ProductList extends Component
+class StoreList extends Component
 {
     public $modal = true;
     public $showJetModal = false;
@@ -20,18 +19,18 @@ class ProductList extends Component
     public $detail;
     public $registerId;
     public $id;
-    public $breadcrumb = 'Produtos';
-    public $product;
+    public $breadcrumb = 'Lojas';
+    public $store;
 
     // Propriedades do Livewire, que podem ser bindadas ao front-end
-    public string $model = "Modules\Products\App\Models\Product";
-    public string $modelId = "id"; // 'id' ou 'Products.id'
+    public string $model = "Modules\Stores\App\Models\Store";
+    public string $modelId = "id"; // 'id' ou 'stores.id'
     public ?string $search = null; // Termo de busca
     public array $sorts = ['title' => 'asc']; // Ordenação
     public ?string $relationTables = null; // String de joins
     public ?array $customSearch = null; // Mapeamento de busca customizada
-    public string $columnsInclude = 'title,value,logo_path,active as status';
-    public string $searchableColumns = 'title,value'; // Colunas pesquisáveis
+    public string $columnsInclude = 'title,logo_path,active as status';
+    public string $searchableColumns = 'title'; // Colunas pesquisáveis
 
     public int $paginate = 15; // Itens por página
     public string $activeColumnName = 'active'; // Coluna de ativo/inativo
@@ -79,7 +78,7 @@ class ProductList extends Component
             ->get();
 
         return view(
-            'products::admin.product-list',
+            'stores::livewire.admin.store-list',
             compact('dataTable')
         );
     }
@@ -102,9 +101,9 @@ class ProductList extends Component
     {
         if ($this->modal) {
             $this->showModalForm = true;
-            $this->product = '';
+            $this->store = '';
         } else {
-            redirect()->route('products.product-create');
+            redirect()->route('stores.store-create');
         }
     }
 
@@ -114,9 +113,9 @@ class ProductList extends Component
 
         if ($this->modal) {
             $this->showModalForm = true;
-            $this->product = Product::find($id);
+            $this->store = Store::find($id);
         } else {
-            redirect()->route('products.product-edit', $id);
+            redirect()->route('stores.store-edit', $id);
         }
     }
 
@@ -132,7 +131,7 @@ class ProductList extends Component
     }
     public function delete($id)
     {
-        $data = Product::where('id', $id)->first();
+        $data = Store::where('id', $id)->first();
         $data->active = 0;
         $data->save();
 
@@ -143,7 +142,7 @@ class ProductList extends Component
     //ACTIVE
     public function buttonActive($id)
     {
-        $data = Product::where('id', $id)->first();
+        $data = Store::where('id', $id)->first();
         if ($data->active == 1) {
             $data->active = 0;
             $data->save();

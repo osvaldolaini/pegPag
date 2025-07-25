@@ -30,12 +30,6 @@ class Settings extends Component
     public $city;
     public $state;
     public $complement;
-    public $board;
-    public $airfield_codigoOaci;
-    public $airfield_ciad;
-    public $airfield_name;
-    public $airfield_city;
-    public $airfield_state;
     public $logo_path;
     public $contacts;
     public $chart_categories;
