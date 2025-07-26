@@ -15,7 +15,7 @@
             </p>
         </div>
     @else
-        <h1>
+        <h1 class="items-center text-center">
             <a href="{{ url('/cliente') }}" class="flex btn btn-info text-lg">
                 <x-svg.customer class="size-[1.8em]"></x-svg.customer>
                 Identificação

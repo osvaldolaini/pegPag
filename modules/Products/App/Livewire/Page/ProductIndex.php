@@ -4,18 +4,47 @@ namespace Modules\Products\App\Livewire\Page;
 
 use Livewire\Component;
 use Modules\Products\App\Models\Product;
+use Modules\Stores\App\Models\Store;
 
 class ProductIndex extends Component
 {
-    public $products;
+    public $inStock;
+    public $stores;
+    public $store;
     public $cart;
+    public $active;
+
     public function mount()
     {
-        $this->products = Product::where('active', 1)->get();
+        $this->store = Store::where('active', 1)->first();
+        $this->active = $this->store->id;
+        $this->stores = Store::where('active', 1)->get();
         $this->cart = session()->get('cart', []);
+
+        session([
+            'pix.key' => $this->store->key_pix,
+            'pix.city' => $this->store->city_pix,
+            'pix.name' => strtolower($this->store->title),
+        ]);
     }
+    public function changeStore($id)
+    {
+        session()->forget(['cart']);
+        $this->cart = session()->get('cart', []);
+        $this->store = Store::find($id);
+        session([
+            'pix.key' => $this->store->key_pix,
+            'pix.city' => mb_strtoupper($this->store->city),
+            'pix.name' => strtolower($this->store->title),
+        ]);
+        $this->active = $this->store->id;
+        $this->inStock = $this->store->products;
+    }
+
     public function render()
     {
+        $this->inStock = $this->store->products;
+
         return view('products::page.product-index')
             ->layout('components.layouts.shopping', [
                 'title' => 'Página pública de Product',
@@ -24,12 +53,14 @@ class ProductIndex extends Component
                 'meta_image' => asset('images/home-banner.jpg'),
             ]);
     }
+
     public function addToCartRedirect($productId)
     {
         $this->closeAlert();
-        $product = collect($this->products)->firstWhere('id', $productId);
 
-        if (!$product) return;
+        $stock = collect($this->inStock)->firstWhere('product_id', $productId);
+
+        if (!$stock) return;
 
         // Verifica se já existe no carrinho
         $index = collect($this->cart)->search(fn($item) => $item['product_id'] === $productId);
@@ -38,14 +69,13 @@ class ProductIndex extends Component
             $this->cart[$index]['quantity'] += 1;
         } else {
             $this->cart[] = [
-                'product_id' => $product->id,
-                'title' => $product->title,
-                'price' => $product->value,
-                'image' => url('storage/products/' . $product->id . '/' . $product->code_image . '_list.png'),
+                'product_id' => $stock->product->id,
+                'title' => $stock->product->title,
+                'price' => $stock->product->value,
+                'image' => url('storage/products/' . $stock->product->id . '/' . $stock->product->code_image . '_list.png'),
                 'quantity' => 1,
             ];
         }
-
 
         session(['cart' => $this->cart]);
         redirect()->route('cart')->with('success', 'Produto adicionado com sucesso.');
@@ -54,9 +84,10 @@ class ProductIndex extends Component
     public function addToCart($productId)
     {
         $this->closeAlert();
-        $product = collect($this->products)->firstWhere('id', $productId);
 
-        if (!$product) return;
+        $stock = collect($this->inStock)->firstWhere('product_id', $productId);
+
+        if (!$stock) return;
 
         // Verifica se já existe no carrinho
         $index = collect($this->cart)->search(fn($item) => $item['product_id'] === $productId);
@@ -65,10 +96,10 @@ class ProductIndex extends Component
             $this->cart[$index]['quantity'] += 1;
         } else {
             $this->cart[] = [
-                'product_id' => $product->id,
-                'title' => $product->title,
-                'price' => $product->value,
-                'image' => url('storage/products/' . $product->id . '/' . $product->code_image . '_list.png'),
+                'product_id' => $stock->product->id,
+                'title' => $stock->product->title,
+                'price' => $stock->product->value,
+                'image' => url('storage/products/' . $stock->product->id . '/' . $stock->product->code_image . '_list.png'),
                 'quantity' => 1,
             ];
         }
