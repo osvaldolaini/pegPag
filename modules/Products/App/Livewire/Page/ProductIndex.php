@@ -33,6 +33,7 @@ class ProductIndex extends Component
         $this->cart = session()->get('cart', []);
         $this->store = Store::find($id);
         session([
+            'store.id' => $this->store->id,
             'pix.key' => $this->store->key_pix,
             'pix.city' => mb_strtoupper($this->store->city),
             'pix.name' => strtolower($this->store->title),
