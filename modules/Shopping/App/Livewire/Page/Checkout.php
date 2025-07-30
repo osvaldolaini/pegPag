@@ -39,10 +39,10 @@ class Checkout extends Component
     {
         return view('shopping::livewire.page.checkout')
             ->layout('components.layouts.shopping', [
-                'title' => 'Página pública de Shopping',
-                'meta_description' => 'Descrição detalhada da página Shopping.',
-                'meta_keywords' => 'shopping, blog, laravel',
-                'meta_image' => asset('images/home-banner.jpg'),
+                'title' => 'Peg & Pag - App',
+                'meta_description' => 'Sistema auto atendimento simplificado.',
+                'meta_keywords' => 'loja, produtos, pegue e pague',
+                'meta_image' => asset('logos/logo.png'),
             ]);
     }
 }

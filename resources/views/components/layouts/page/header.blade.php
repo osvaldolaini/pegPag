@@ -3,7 +3,7 @@
 
         {{-- Logo --}}
         <a href="{{ url('/') }}" class="text-xl font-bold text-indigo-600">
-            {{ $settings->title ?? 'Minha Empresa' }}
+            {{ $settings->title ?? 'PEG & PAG' }}
         </a>
 
         {{-- Menu Desktop --}}
