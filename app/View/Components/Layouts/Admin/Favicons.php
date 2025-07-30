@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\Svg;
+namespace App\View\Components\Layouts\Admin;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Back extends Component
+class Favicons extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class Back extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.svg.back');
+        return view('components.layouts.admin.favicons');
     }
 }
