@@ -31,6 +31,19 @@
 
 
     @livewireScripts
+    @stack('scripts')
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('Service Worker registrado'))
+                .catch((error) => console.log('Erro ao registrar Service Worker', error));
+        }
+    </script>
+
+
+    @yield('scripts')
+
+    @yield('push')
 </body>
 
 </html>
