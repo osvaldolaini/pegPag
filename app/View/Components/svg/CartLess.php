@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\svg;
+namespace App\View\Components\Svg;
 
 use Closure;
 use Illuminate\Contracts\View\View;

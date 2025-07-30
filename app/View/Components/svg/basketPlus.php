@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\svg;
+namespace App\View\Components\Svg;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class basketPlus extends Component
+class BasketPlus extends Component
 {
     /**
      * Create a new component instance.
