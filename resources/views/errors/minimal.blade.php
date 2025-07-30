@@ -533,26 +533,43 @@
 </head>
 
 <body class="antialiased">
-    <div
-        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
-            <a href="{{ route('home') }}" class="relative z-20 flex items-center text-lg font-medium" wire:navigate>
-                <span class="flex h-10 w-10 items-center justify-center rounded-md">
-                    <x-app-logo-icon class="me-2 h-12 fill-current text-white" />
-                </span>
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <div class="flex items-center pt-8 sm:justify-start sm:pt-0">
-                <div class="px-4 text-lg text-gray-500 border-r border-gray-400 tracking-wider">
-                    @yield('code')
+
+    <body
+        class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-200 min-h-screen flex flex-col">
+        <div class="container mx-auto px-4 py-16 flex-1 flex flex-col items-center justify-center">
+            <div class="max-w-md w-full text-center">
+
+                <div class="mb-8">
+                    <a href="{{ route('home') }}" class="relative z-20 flex items-center text-lg font-medium"
+                        wire:navigate>
+                        <span class="flex h-10 w-10 items-center justify-center rounded-md">
+                            <x-app-logo-icon class="me-2 h-12 fill-current text-white" />
+                        </span>
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
                 </div>
 
-                <div class="ml-4 text-lg text-gray-500 uppercase tracking-wider">
-                    @yield('message')
+                <h1 class="text-5xl font-bold mb-4 text-[#6366f1] dark:text-[#818cf8]">@yield('code')</h1>
+                <h2 class="text-2xl font-semibold mb-4">@yield('message')</h2>
+                <p class="mb-8 text-gray-600 dark:text-gray-400">
+                    Oops!
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="{{ route('home') }}"
+                        class="px-6 py-3 bg-[#6366f1] dark:bg-[#818cf8] text-white rounded-lg font-medium hover:opacity-90 transition-opacity">
+                        Voltar para home
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
+
+        <footer class="py-6 text-center text-gray-500 dark:text-gray-400 text-sm">
+            © 2025 Your Company. All rights reserved.
+        </footer>
+
+    </body>
+
 </body>
 
 </html>
