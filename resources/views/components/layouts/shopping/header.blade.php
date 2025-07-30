@@ -16,7 +16,7 @@
         {{-- Botão menu mobile --}}
         @if (Request::is('produtos'))
             <div class="md:hidden">
-                <a href="{{ url('/carrinho') }}" class="flex btn btn-soft btn-success">
+                <a href="{{ url('/carrinho') }}" class="flex btn btn-soft btn-active">
                     <x-svg.basket-plus class="size-[1.8em]"></x-svg.basket-plus>
                     Ir para o carrinho
                 </a>
