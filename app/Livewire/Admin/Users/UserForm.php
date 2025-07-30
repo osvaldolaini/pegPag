@@ -63,7 +63,7 @@ class UserForm extends Component
                 $this->sex = $user->people->sex;
             }
         }
-        $this->groups = UserGroups::cases();
+        // $this->groups = UserGroups::cases();
 
         if (!$this->userGroups) {
             $this->userGroups = [];

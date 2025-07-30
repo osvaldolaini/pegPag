@@ -1,8 +1,4 @@
 <div>
-    @php
-        use App\Enums\MilitaryRank;
-        use App\Enums\FunctionsObserver;
-    @endphp
     <x-layout.breadcrumb>
         <x-slot name="left">
             <h3 class="text-2xl font-bold cursor-pointer tracki dark:text-gray-50">
@@ -65,7 +61,7 @@
                         </x-slot>
                         <x-slot name="title">Foto</x-slot>
                     </x-layout.tabs-nav>
-                    <x-layout.tabs-nav tab="tab3">
+                    {{-- <x-layout.tabs-nav tab="tab3">
                         <x-slot name="svg">
                             <svg fill="currentColor"
                                 class="w-5 h-5 transition duration-75 shrink-0 text-primary-600 dark:text-primary-400"
@@ -76,7 +72,7 @@
                             </svg>
                         </x-slot>
                         <x-slot name="title">Acessos</x-slot>
-                    </x-layout.tabs-nav>
+                    </x-layout.tabs-nav> --}}
                     <x-layout.tabs-nav tab="tab4">
                         <x-slot name="svg">
                             <svg fill="currentColor"
@@ -89,7 +85,7 @@
                         </x-slot>
                         <x-slot name="title">Autorizações</x-slot>
                     </x-layout.tabs-nav>
-                    <x-layout.tabs-nav tab="tab5">
+                    {{-- <x-layout.tabs-nav tab="tab5">
                         <x-slot name="svg">
                             <svg fill="currentColor"
                                 class="w-5 h-5 transition duration-75 shrink-0 text-primary-600 dark:text-primary-400"
@@ -100,7 +96,7 @@
                             </svg>
                         </x-slot>
                         <x-slot name="title">Companhias</x-slot>
-                    </x-layout.tabs-nav>
+                    </x-layout.tabs-nav> --}}
                 @endif
             </x-slot>
             <x-slot name="content">
@@ -159,7 +155,7 @@
                     </div>
                 </div>
                 @if ($id)
-                    <div id="tab6" x-show="activeTab === '#tab6'">
+                    {{-- <div id="tab6" x-show="activeTab === '#tab6'">
                         <div role="tabpanel"
                             class="p-6 border-2 rounded-r-lg rounded-bl-lg bg-base-100 border-base-300 dark:bg-gray-700 dark:text-gray-100">
                             <div class="grid grid-cols-2 gap-2 mb-1 sm:grid-cols-6 sm:gap-3 sm:mb-5">
@@ -221,31 +217,31 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div id="tab2" x-show="activeTab === '#tab2'" class="block">
                         <div role="tabpanel"
                             class="p-6 border-2 rounded-r-lg rounded-bl-lg bg-base-100 border-base-300 dark:bg-gray-700 dark:text-gray-100">
                             @livewire('admin.users.user-upload-image', ['id' => $user->id])
                         </div>
                     </div>
-                    <div id="tab3" x-show="activeTab === '#tab3'" class="block">
+                    {{-- <div id="tab3" x-show="activeTab === '#tab3'" class="block">
                         <div role="tabpanel"
                             class="p-6 border-2 rounded-r-lg rounded-bl-lg bg-base-100 border-base-300 dark:bg-gray-700 dark:text-gray-100">
                             @livewire('admin.users.user-accesses', ['user' => $user], key($user->id))
                         </div>
-                    </div>
+                    </div> --}}
                     <div id="tab4" x-show="activeTab === '#tab4'" class="block">
                         <div role="tabpanel"
                             class="p-6 border-2 rounded-r-lg rounded-bl-lg bg-base-100 border-base-300 dark:bg-gray-700 dark:text-gray-100">
                             @livewire('admin.users.user-crud', ['user' => $user], key($user->id))
                         </div>
                     </div>
-                    <div id="tab5" x-show="activeTab === '#tab5'" class="block">
+                    {{-- <div id="tab5" x-show="activeTab === '#tab5'" class="block">
                         <div role="tabpanel"
                             class="p-6 border-2 rounded-r-lg rounded-bl-lg bg-base-100 border-base-300 dark:bg-gray-700 dark:text-gray-100">
                             @livewire('admin.users.user-companies', ['user' => $user], key($user->id))
                         </div>
-                    </div>
+                    </div> --}}
                 @endif
             </x-slot>
         </x-layout.tabs>
