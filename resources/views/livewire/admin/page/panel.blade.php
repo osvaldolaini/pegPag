@@ -1,5 +1,7 @@
 <div>
-
+    @php
+        use App\Enums\SalesStatus;
+    @endphp
     <x-layouts.admin.tabs.tabs>
         <x-slot name="nav">
             @foreach ($stores as $item)
@@ -85,6 +87,7 @@
                                                 <th class="px-4 py-2 text-left">Data</th>
                                                 <th class="px-4 py-2 text-left">Cliente</th>
                                                 <th class="px-4 py-2 text-right">Valor</th>
+                                                <th class="px-4 py-2 text-right">Status</th>
                                                 <th class="px-4 py-2 text-center">Ação</th>
                                             </tr>
                                         </thead>
@@ -99,6 +102,14 @@
                                                     </td>
                                                     <td class="px-4 py-2 text-right">R$
                                                         {{ number_format($sale->value, 2, ',', '.') }}
+                                                    </td>
+                                                    <td class="px-4 py-2 text-center">
+                                                        {{-- <span class="badge badge-success"></span>
+                                                        <span class="badge badge-warning"></span> --}}
+                                                        <span
+                                                            class="badge {{ SalesStatus::From($sale->status)->badgeClass() }}">
+                                                            {{ SalesStatus::From($sale->status)->dbName() }}
+                                                        </span>
                                                     </td>
                                                     <td class="px-4 py-2 text-center">
                                                         <button wire:click="showSaleDetails({{ $sale->id }})"

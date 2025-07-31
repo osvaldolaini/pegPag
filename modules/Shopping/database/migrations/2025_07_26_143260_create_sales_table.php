@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-
+            $table->integer('status');
             $table->json('customer')->nullable();
             $table->json('items')->nullable();
             $table->foreignId('store_id')

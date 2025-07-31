@@ -45,7 +45,7 @@ class Payment extends Component
     {
         $this->paid = true;
         $sale = Sales::create([
-            'active'    => 1,
+            'status'    => 1,
             'store_id'  => session('store.id'),
             'items'     => json_encode($this->cart),
             'customer'  => json_encode([

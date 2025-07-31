@@ -17,7 +17,7 @@ class Sales extends Model
 
     protected $table = 'sales';
 
-    protected $fillable = ['customer', 'items', 'value', 'pix_code', 'store_id'];
+    protected $fillable = ['customer', 'items', 'status', 'value', 'pix_code', 'store_id'];
 
     protected $casts = [
         'value' => 'float',  // Força o grau a ser interpretado como número
