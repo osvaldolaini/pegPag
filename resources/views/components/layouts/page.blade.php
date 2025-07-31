@@ -22,7 +22,7 @@
 <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
 
     {{-- Barra de contatos --}}
-    <x-layouts.page.contact-bar />
+    {{-- <x-layouts.page.contact-bar /> --}}
 
     {{-- Menu principal (fixo/sticky) --}}
     <div class="sticky top-0 z-50">

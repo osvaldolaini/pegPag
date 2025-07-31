@@ -7,8 +7,8 @@
 
 
     <div class="container mx-auto min-h-[2000px]">
-        <h2 class="text-2xl font-bold mb-4">Bem-vindo à nossa empresa!</h2>
-        <p class="text-gray-700">Oferecemos soluções contábeis completas para o seu negócio.</p>
+        <h2 class="text-2xl font-bold mb-4">Pegue & Pague!</h2>
+        <p class="text-gray-700"></p>
     </div>
 
 
