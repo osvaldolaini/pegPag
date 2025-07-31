@@ -47,12 +47,12 @@
     <h2 class="text-xl font-bold mb-4 w-full text-center bg-amber-600 rounded-md py-2">{{ $store->title }}</h2>
     <ul class="list bg-base-100 rounded-box shadow-md">
 
-        <li class="p-4 pb-2 text-xs  tracking-wide">Selecione seu produto</li>
+        <li class="p-4 pb-2 text-xs tracking-wide">Selecione seu produto</li>
         @foreach ($inStock as $stock)
             @php
                 $inCart = collect($cart)->contains(fn($item) => $item['product_id'] === $stock->product->id);
             @endphp
-            <li class="list-row dark:bg-gray-900 dark:text-white">
+            <li class="list-row dark:bg-gray-900 dark:text-gray-50">
                 <div>
                     <img class="size-10 rounded-box"
                         src="{{ url('storage/products/' . $stock->product->id . '/' . $stock->product->code_image . '_list.png') }}"
