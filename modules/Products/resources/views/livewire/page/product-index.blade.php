@@ -1,17 +1,15 @@
 <div>
     @livewire('message-alert')
-    <div role="tablist" class="tabs tabs-border dark">
+    {{-- <div role="tablist" class="tabs tabs-border dark">
         @foreach ($stores as $item)
             <button wire:click='changeStore({{ $item->id }})'
                 class="btn btn-active {{ $item->id === $active ? '' : 'btn-outline' }} mr-2 p-0">
                 @if ($item->logo_path)
-                    {{-- <div class="avatar"> --}}
                     <div class="relative w-12 rounded-full cursor-pointer">
                         <!-- Avatar pequeno -->
                         <img src="{{ url('storage/stores/' . $item->id . '/' . $item->code_image . '_list.png') }}"
                             alt="{{ $item->title }}">
                     </div>
-                    {{-- </div> --}}
                 @else
                     <div class="avatar">
                         <div class="relative w-8 rounded-full cursor-pointer">
@@ -19,10 +17,9 @@
                         </div>
                     </div>
                 @endif
-                {{-- <span class="dock-label">{{ $store->title }}</span> --}}
             </button>
         @endforeach
-    </div>
+    </div> --}}
     <div class="dock dock-lg">
         @foreach ($stores as $item)
             <button wire:click='changeStore({{ $item->id }})'>
