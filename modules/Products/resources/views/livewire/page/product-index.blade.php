@@ -6,7 +6,7 @@
                 class="btn btn-active {{ $item->id === $active ? '' : 'btn-outline' }} mr-2 ">
                 @if ($item->logo_path)
                     {{-- <div class="avatar"> --}}
-                    <div class="relative w-8 rounded-full cursor-pointer">
+                    <div class="relative w-12 rounded-full cursor-pointer">
                         <!-- Avatar pequeno -->
                         <img src="{{ url('storage/stores/' . $item->id . '/' . $item->code_image . '_list.png') }}"
                             alt="{{ $item->title }}">
