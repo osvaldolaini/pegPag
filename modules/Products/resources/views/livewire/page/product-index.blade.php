@@ -28,7 +28,7 @@
             <button wire:click='changeStore({{ $item->id }})'>
                 @if ($item->logo_path)
                     {{-- <div class="avatar"> --}}
-                    <div class="relative w-8 rounded-full cursor-pointer">
+                    <div class="relative w-12 rounded-full cursor-pointer">
                         <!-- Avatar pequeno -->
                         <img src="{{ url('storage/stores/' . $item->id . '/' . $item->code_image . '_list.png') }}"
                             alt="{{ $item->title }}">
@@ -36,7 +36,7 @@
                     {{-- </div> --}}
                 @else
                     {{-- <div class="avatar"> --}}
-                    <div class="relative w-8 rounded-full cursor-pointer">
+                    <div class="relative w-12 rounded-full cursor-pointer">
                         <x-layouts.admin.application-logo width="h-12"></x-layouts.admin.application-logo>
                     </div>
                     {{-- </div> --}}
