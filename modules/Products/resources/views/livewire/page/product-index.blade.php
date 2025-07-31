@@ -3,7 +3,7 @@
     <div role="tablist" class="tabs tabs-border">
         @foreach ($stores as $item)
             <button wire:click='changeStore({{ $item->id }})'
-                class="btn btn-active {{ $item->id === $active ? '' : 'btn-outline' }} mr-2 ">
+                class="btn btn-active {{ $item->id === $active ? '' : 'btn-outline' }} mr-2 p-0">
                 @if ($item->logo_path)
                     {{-- <div class="avatar"> --}}
                     <div class="relative w-12 rounded-full cursor-pointer">
