@@ -1,15 +1,15 @@
 {
-    "name": "Gerencia",
-    "short_name": "Gerencia",
+    "name": "Peg&Pag",
+    "short_name": "Peg&Pag",
     "id": "/index.php",
     "start_url": "/",
     "background_color": "#ffffff",
-    "description": "Sistema de gestão de companhias de colégios militares",
+    "description": "Sistema facilitado ce compra de produtos estilo pegue e pague",
     "display": "fullscreen",
     "theme_color": "#ffffff",
     "protocol_handlers": [
         {
-            "protocol": "web+gerencia",
+            "protocol": "web+pegpag",
             "url": "/?open=%s"
         }
     ],

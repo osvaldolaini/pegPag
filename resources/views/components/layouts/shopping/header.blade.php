@@ -7,7 +7,7 @@
         </a>
 
         {{-- Menu Desktop --}}
-        <nav class="hidden md:flex space-x-6">
+        <nav class="hidden lg:flex space-x-6">
             <a href="{{ url('/') }}" class="text-gray-700 hover:text-indigo-600">Início</a>
             <a href="{{ url('/sobre') }}" class="text-gray-700 hover:text-indigo-600">Sobre</a>
             <a href="{{ url('/contato') }}" class="text-gray-700 hover:text-indigo-600">Contato</a>
@@ -15,14 +15,14 @@
 
         {{-- Botão menu mobile --}}
         @if (Request::is('produtos'))
-            <div class="md:hidden">
+            <div class="lg:hidden">
                 <a href="{{ url('/carrinho') }}" class="flex btn btn-soft btn-success">
                     <x-svg.basket-plus class="size-[1.8em]"></x-svg.basket-plus>
                     Ir para o carrinho
                 </a>
             </div>
         @else
-            <div class="md:hidden">
+            <div class="lg:hidden">
                 <a href="{{ url('/produtos') }}" class="flex btn btn-soft btn-active">
                     <x-svg.back class="size-[1.8em]"></x-svg.back>
                     Voltar à loja

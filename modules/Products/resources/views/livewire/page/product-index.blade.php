@@ -1,6 +1,6 @@
 <div>
     @livewire('message-alert')
-    <div role="tablist" class="tabs tabs-border">
+    <div role="tablist" class="tabs tabs-border dark">
         @foreach ($stores as $item)
             <button wire:click='changeStore({{ $item->id }})'
                 class="btn btn-active {{ $item->id === $active ? '' : 'btn-outline' }} mr-2 p-0">
@@ -55,7 +55,7 @@
             @php
                 $inCart = collect($cart)->contains(fn($item) => $item['product_id'] === $stock->product->id);
             @endphp
-            <li class="list-row">
+            <li class="list-row dark:text-white">
                 <div>
                     <img class="size-10 rounded-box"
                         src="{{ url('storage/products/' . $stock->product->id . '/' . $stock->product->code_image . '_list.png') }}"
