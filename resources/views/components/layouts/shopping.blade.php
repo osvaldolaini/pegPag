@@ -29,7 +29,6 @@
         {{ $slot }}
     </main>
 
-
     @livewireScripts
     @stack('scripts')
     <script>
@@ -39,8 +38,6 @@
                 .catch((error) => console.log('Erro ao registrar Service Worker', error));
         }
     </script>
-
-
     @yield('scripts')
 
     @yield('push')
