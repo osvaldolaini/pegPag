@@ -47,7 +47,7 @@
     <h2 class="text-xl font-bold mb-4 w-full text-center bg-amber-600 rounded-md py-2">{{ $store->title }}</h2>
     <ul class="list bg-base-100 rounded-box shadow-md">
 
-        <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Selecione seu produto</li>
+        <li class="p-4 pb-2 text-xs  tracking-wide">Selecione seu produto</li>
         @foreach ($inStock as $stock)
             @php
                 $inCart = collect($cart)->contains(fn($item) => $item['product_id'] === $stock->product->id);
@@ -60,7 +60,7 @@
                 </div>
                 <div>
                     <div>{{ $stock->product->title }}</div>
-                    <div class="text-xs uppercase font-semibold opacity-60">R$ {{ $stock->product->value_view }}</div>
+                    <div class="text-xs uppercase font-semibold ">R$ {{ $stock->product->value_view }}</div>
                 </div>
                 @if ($inCart)
                     <button class="btn btn-square btn-outline btn-error"
