@@ -91,7 +91,6 @@ class UserForm extends Component
     {
         $this->rules = [
             'name'          => 'required',
-            'userGroups'    => 'required',
             'email'         => 'required|email|' . Rule::unique('users')->ignore($this->id),
         ];
         if ($this->id == '') {
@@ -112,7 +111,7 @@ class UserForm extends Component
                 'id' => $this->id,
             ], [
                 'name'      => $this->name,
-                'groups'    => $this->userGroups,
+                // 'groups'    => $this->userGroups,
                 'email'     => $this->email,
                 'panel'     => $panel,
             ]);
@@ -134,7 +133,7 @@ class UserForm extends Component
             $user = User::create([
                 'active'    => 1,
                 'name'      => $this->name,
-                'groups'    => $this->userGroups,
+                // 'groups'    => $this->userGroups,
                 'accesses'  => ['all'],
                 'activities' => ['create'],
                 'email'     => $this->email,
@@ -143,16 +142,6 @@ class UserForm extends Component
                 'password'  => Hash::make($this->password),
             ]);
             $id = $user->id;
-            Peoples::create([
-                'active'    => 1,
-                'name'      => $user->name,
-                'nick'      => null,
-                'user_id'   => $user->id,
-                'posto_grad' => 0,
-                'function'  => 'outros',
-                'type'      => 0,
-                'code'      => Str::uuid(),
-            ]);
         }
         $this->openAlert('success', 'Registro salvo com sucesso.');
         return $id;
