@@ -23,7 +23,7 @@
             </div>
         @else
             <div class="md:hidden">
-                <a href="{{ url('/produtos') }}" class="flex btn btn-soft btn-active">
+                <a href="{{ url('/produtos') }}" class="flex btn btn-soft btn-success">
                     <x-svg.back class="size-[1.8em]"></x-svg.back>
                     Voltar à loja
                 </a>
