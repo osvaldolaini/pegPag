@@ -20,7 +20,7 @@
             </button>
         @endforeach
     </div> --}}
-    <div class="dock dock-lg">
+    <div class="dock dock-lg bg-gray-50">
         @foreach ($stores as $item)
             <button wire:click='changeStore({{ $item->id }})'>
                 @if ($item->logo_path)
