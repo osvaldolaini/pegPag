@@ -14,6 +14,7 @@ class ShoppingServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
 
         Livewire::component('page.cart-index', \Modules\Shopping\App\Livewire\Page\Cart::class);
+        Livewire::component('page.count-cart', \Modules\Shopping\App\Livewire\Page\CountCart::class);
         Livewire::component('page.checkout-index', \Modules\Shopping\App\Livewire\Page\Checkout::class);
         Livewire::component('page.shopping-index', \Modules\Shopping\App\Livewire\Page\Payment::class);
     }

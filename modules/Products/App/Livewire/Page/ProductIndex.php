@@ -40,6 +40,8 @@ class ProductIndex extends Component
         ]);
         $this->active = $this->store->id;
         $this->inStock = $this->store->products;
+
+        $this->dispatch('update-cart');
     }
 
     public function render()
@@ -79,6 +81,8 @@ class ProductIndex extends Component
         }
 
         session(['cart' => $this->cart]);
+
+        $this->dispatch('update-cart');
         redirect()->route('cart')->with('success', 'Produto adicionado com sucesso.');
     }
 
@@ -108,6 +112,8 @@ class ProductIndex extends Component
 
         session(['cart' => $this->cart]);
 
+        $this->dispatch('update-cart');
+
         $this->openAlert('success', 'Produto adicionado com sucesso.');
     }
 
@@ -120,6 +126,7 @@ class ProductIndex extends Component
             ->toArray();
 
         session(['cart' => $this->cart]);
+        $this->dispatch('update-cart');
         $this->openAlert('success', 'Produto removido com sucesso.');
     }
 

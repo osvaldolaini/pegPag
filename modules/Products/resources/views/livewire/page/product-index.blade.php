@@ -52,7 +52,7 @@
             @php
                 $inCart = collect($cart)->contains(fn($item) => $item['product_id'] === $stock->product->id);
             @endphp
-            <li class="list-row dark:text-white">
+            <li class="list-row dark:bg-gray-900 dark:text-white">
                 <div>
                     <img class="size-10 rounded-box"
                         src="{{ url('storage/products/' . $stock->product->id . '/' . $stock->product->code_image . '_list.png') }}"

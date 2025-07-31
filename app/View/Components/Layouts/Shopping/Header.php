@@ -17,6 +17,7 @@ class Header extends Component
     {
         // Exemplo: busca o primeiro registro da tabela de configurações
         $settings = Settings::first();
+
         view()->share('settings', $settings);
     }
 
