@@ -86,8 +86,8 @@
                                                 <th class="px-4 py-2 text-left">ID</th>
                                                 <th class="px-4 py-2 text-left">Data</th>
                                                 <th class="px-4 py-2 text-left">Cliente</th>
-                                                <th class="px-4 py-2 text-right">Valor</th>
-                                                <th class="px-4 py-2 text-right">Status</th>
+                                                <th class="px-4 py-2 text-center">Valor</th>
+                                                <th class="px-4 py-2 text-center">Status</th>
                                                 <th class="px-4 py-2 text-center">Ação</th>
                                             </tr>
                                         </thead>
@@ -100,7 +100,7 @@
                                                     <td class="px-4 py-2">
                                                         {{ json_decode($sale->customer)->name ?? 'N/A' }}
                                                     </td>
-                                                    <td class="px-4 py-2 text-right">R$
+                                                    <td class="px-4 py-2 text-center">R$
                                                         {{ number_format($sale->value, 2, ',', '.') }}
                                                     </td>
                                                     <td class="px-4 py-2 text-center">
