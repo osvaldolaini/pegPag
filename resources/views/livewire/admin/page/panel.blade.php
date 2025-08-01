@@ -114,7 +114,7 @@
                                                     <td class="px-4 py-2 text-center">
                                                         <button wire:click="showSaleDetails({{ $sale->id }})"
                                                             class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 transition">
-                                                            Detalhes
+                                                            <x-svg.eyes class="ml-2 size-6"></x-svg.eyes>
                                                         </button>
                                                     </td>
                                                 </tr>
