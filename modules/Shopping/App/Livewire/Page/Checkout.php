@@ -21,6 +21,11 @@ class Checkout extends Component
 
     public function submit()
     {
+
+        $cart = session('cart', []);
+        $total = collect($this->cart)->sum(function ($item) {
+            return $item['price'] * $item['quantity'];
+        });
         $this->validate([
             'name' => 'required|string|min:3',
             // 'cpf' => 'required|digits:11',
@@ -36,14 +41,14 @@ class Checkout extends Component
         $sale = Sales::create([
             'status'    => 1,
             'store_id'  => session('store.id'),
-            'items'     => json_encode($this->cart),
+            'items'     => json_encode($cart),
             'customer'  => json_encode([
                 'name'  => $this->name,
                 'cpf'   => $this->cpf,
                 'phone' => $this->phone,
             ]),
             'pix_code'  => $this->description,
-            'value'     => $this->total
+            'value'     => $total
         ]);
 
         return redirect()->route('payment', $sale);
