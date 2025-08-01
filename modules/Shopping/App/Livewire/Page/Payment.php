@@ -46,7 +46,7 @@ class Payment extends Component
     public function simulatePayment()
     {
         $this->paid = true;
-        $this->sale->status = 0;
+        $this->sale->status = 1;
         $this->sale->save();
 
         session()->forget(['cart', 'checkout.name', 'checkout.cpf', 'checkout.phone']);

@@ -39,7 +39,7 @@ class Checkout extends Component
         ]);
 
         $sale = Sales::create([
-            'status'    => 1,
+            'status'    => 0,
             'store_id'  => session('store.id'),
             'items'     => json_encode($cart),
             'customer'  => json_encode([
