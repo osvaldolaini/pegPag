@@ -2,7 +2,7 @@
     "name": "Peg&Pag",
     "short_name": "Peg&Pag",
     "id": "/index.php",
-    "start_url": "/",
+    "start_url": "/produtos",
     "background_color": "#ffffff",
     "description": "Sistema facilitado de compras estilo pegue e pague",
     "display": "standalone",
