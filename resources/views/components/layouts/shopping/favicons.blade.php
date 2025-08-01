@@ -35,7 +35,7 @@
     href="{{ url('storage/favicons/favicon-96x96.png') }}?v={{ $faviconVersion }}">
 <link rel="icon" type="image/png" sizes="192x192"
     href="{{ url('storage/favicons/android-icon-192x192.png') }}?v={{ $faviconVersion }}">
-<link rel="manifest" href="{{ url('storage/favicons/manifest.json') }}?v={{ $faviconVersion }}">
+<link rel="manifest" href="{{ url('manifest.json') }}?v={{ $faviconVersion }}">
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage"
     content="{{ url('storage/favicons/ms-icon-144x144.png') }}?v={{ $faviconVersion }}">
