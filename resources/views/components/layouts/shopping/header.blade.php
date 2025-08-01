@@ -1,4 +1,4 @@
-<div id="main-header" class="bg-whiteshadow transition duration-300">
+<div id="main-header" class="bg-white shadow transition duration-300">
     <div class="container mx-auto flex items-center justify-between px-4 py-8">
 
         {{-- Logo --}}

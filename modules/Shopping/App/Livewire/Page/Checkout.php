@@ -23,7 +23,7 @@ class Checkout extends Component
     {
 
         $cart = session('cart', []);
-        $total = collect($this->cart)->sum(function ($item) {
+        $total = collect($cart)->sum(function ($item) {
             return $item['price'] * $item['quantity'];
         });
         $this->validate([
