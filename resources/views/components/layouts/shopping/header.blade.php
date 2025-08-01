@@ -10,7 +10,8 @@
         @if (Request::is('produtos'))
             <div>
                 <a href="{{ url('/carrinho') }}" class="flex btn btn-soft btn-success">
-                    <x-svg.cart-empty class="size-[1.8em]"></x-svg.cart-empty>
+                    {{-- <x-svg.cart-empty class="size-[1.8em]"></x-svg.cart-empty> --}}
+                    <x-svg.basket-empty class="size-[1.8em]"></x-svg.basket-empty>
                     carrinho
                     @livewire('page.count-cart')
                 </a>

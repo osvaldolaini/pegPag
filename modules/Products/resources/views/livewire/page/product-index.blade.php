@@ -1,5 +1,5 @@
 <div>
-    @livewire('message-alert')
+    {{-- @livewire('message-alert') --}}
     {{-- <div role="tablist" class="tabs tabs-border dark">
         @foreach ($stores as $item)
             <button wire:click='changeStore({{ $item->id }})'
