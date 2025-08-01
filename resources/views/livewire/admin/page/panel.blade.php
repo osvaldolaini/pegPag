@@ -134,9 +134,10 @@
 
                             {{-- Modal --}}
                             @if ($showModal && $selectedSale)
-                                <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                                <div
+                                    class="fixed inset-0 flex items-center text-gray-900 justify-center bg-black bg-opacity-50 z-50">
                                     <div class="bg-white p-6 rounded-2xl shadow max-w-lg w-full space-y-4">
-                                        <h2 class="text-xl font-bold text-gray-800">Detalhes da Venda
+                                        <h2 class="text-xl font-bold text-gray-900">Detalhes da Venda
                                             #{{ $selectedSale->id }}</h2>
 
                                         <div>
@@ -150,8 +151,8 @@
                                         </div>
 
                                         <div class="mt-4">
-                                            <h3 class="font-semibold mb-2">Itens:</h3>
-                                            <ul class="list-disc list-inside space-y-1">
+                                            <h3 class="font-semibold mb-2 text-gray-900">Itens:</h3>
+                                            <ul class="list-disc list-inside space-y-1 text-gray-900">
                                                 @foreach (json_decode($selectedSale->items ?? '[]') as $item)
                                                     <li>{{ $item->name ?? 'Produto' }} - {{ $item->quantity ?? 1 }}x
                                                         R$
