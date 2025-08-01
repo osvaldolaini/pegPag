@@ -18,7 +18,7 @@
     <link rel="manifest" href="{{ asset('manifest.json') }}">
     <meta name="theme-color" content="#0d6efd">
     <link rel="apple-touch-icon" href="{{ asset('favicons/pwa-logos/icon-192x192.png') }}">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
@@ -35,7 +35,7 @@
     </main>
 
     @livewireScripts
-    @stack('scripts')
+
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
@@ -43,9 +43,7 @@
                 .catch((error) => console.log('Erro ao registrar Service Worker', error));
         }
     </script>
-    @yield('scripts')
 
-    @yield('push')
 </body>
 
 </html>

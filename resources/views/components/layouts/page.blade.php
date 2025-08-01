@@ -15,6 +15,11 @@
     <meta property="og:description" content="{{ $meta_description ?? '' }}" />
     <meta property="og:image" content="{{ $meta_image ?? asset('images/seo-default.jpg') }}" />
 
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    <meta name="theme-color" content="#0d6efd">
+    <link rel="apple-touch-icon" href="{{ asset('favicons/pwa-logos/icon-192x192.png') }}">
+    <meta name="mobile-web-app-capable" content="yes">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
@@ -36,6 +41,13 @@
     <x-layouts.page.footer />
 
     @livewireScripts
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('Service Worker registrado'))
+                .catch((error) => console.log('Erro ao registrar Service Worker', error));
+        }
+    </script>
 </body>
 
 </html>
