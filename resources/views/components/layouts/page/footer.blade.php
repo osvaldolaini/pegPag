@@ -4,20 +4,23 @@
         <div>
             <h3 class="font-semibold mb-3">Sobre Nós</h3>
             <p class="text-gray-400 text-sm">
-                Empresa especialista em contabilidade com transparência e agilidade.
+                💳 Pegue & Pague é um sistema de autoatendimento que permite aos clientes selecionar produtos, adicionar
+                ao carrinho e realizar o pagamento de forma rápida e segura via Pix, sem a necessidade de filas ou
+                atendentes. O gestor acompanha todas as vendas em tempo real, com relatórios e controle de estoque
+                simplificado.
             </p>
         </div>
 
-        <div>
+        {{-- <div>
             <h3 class="font-semibold mb-3">Contato</h3>
             <ul class="text-gray-400 text-sm space-y-1">
                 <li>📞 {{ $contact->phone ?? '(00) 0000-0000' }}</li>
                 <li>✉️ {{ $contact->email ?? 'contato@empresa.com' }}</li>
                 <li>📍 {{ $contact->address ?? 'Endereço não informado' }}</li>
             </ul>
-        </div>
+        </div> --}}
 
-        <div>
+        {{-- <div>
             <h3 class="font-semibold mb-3">Redes Sociais</h3>
             <ul class="flex space-x-4">
                 <li><a href="{{ $social->facebook ?? '#' }}" target="_blank" class="hover:text-blue-500">Facebook</a></li>
@@ -36,7 +39,7 @@
                 <button type="submit"
                     class="bg-indigo-600 hover:bg-indigo-700 text-white rounded px-4 py-2">Assinar</button>
             </form>
-        </div>
+        </div> --}}
 
     </div>
 

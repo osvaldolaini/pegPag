@@ -4,7 +4,7 @@
     "id": "/index.php",
     "start_url": "/",
     "background_color": "#ffffff",
-    "description": "Sistema facilitado ce compra de produtos estilo pegue e pague",
+    "description": "Sistema facilitado de compras estilo pegue e pague",
     "display": "fullscreen",
     "theme_color": "#ffffff",
     "protocol_handlers": [

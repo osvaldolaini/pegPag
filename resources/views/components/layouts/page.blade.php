@@ -19,7 +19,7 @@
     @livewireStyles
 </head>
 
-<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
+<body class="bg-white dark:bg-gray-900 dark:text-gray-50 text-gray-900 flex flex-col min-h-screen">
 
     {{-- Barra de contatos --}}
     {{-- <x-layouts.page.contact-bar /> --}}
@@ -29,7 +29,7 @@
         <x-layouts.page.header />
     </div>
 
-    <main class="flex-grow container mx-auto px-4 py-8">
+    <main class="flex-grow container mx-auto px-4">
         {{ $slot }}
     </main>
 

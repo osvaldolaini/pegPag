@@ -3,15 +3,15 @@
 
         {{-- Logo --}}
         <a href="{{ url('/') }}" class="text-xl font-bold text-indigo-600">
-            {{ $settings->title ?? 'PEG & PAG' }}
+            PEG & PAG
         </a>
 
         {{-- Menu Desktop --}}
-        <nav class="hidden md:flex space-x-6">
+        {{-- <nav class="hidden md:flex space-x-6">
             <a href="{{ url('/') }}" class="text-gray-700 hover:text-indigo-600">Início</a>
             <a href="{{ url('/sobre') }}" class="text-gray-700 hover:text-indigo-600">Sobre</a>
             <a href="{{ url('/contato') }}" class="text-gray-700 hover:text-indigo-600">Contato</a>
-        </nav>
+        </nav> --}}
 
         {{-- Botão menu mobile --}}
         <div class="md:hidden">

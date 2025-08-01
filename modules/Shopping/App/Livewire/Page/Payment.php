@@ -54,6 +54,17 @@ class Payment extends Component
         // Redirecionar após um pequeno delay para visualização da animação
         $this->dispatch('redirect-to-list');
     }
+    public function goHome()
+    {
+        $this->paid = true;
+        $this->sale->status = 2;
+        $this->sale->save();
+
+        session()->forget(['cart', 'checkout.name', 'checkout.cpf', 'checkout.phone']);
+        // dd($sale);
+        // Redirecionar após um pequeno delay para visualização da animação
+        $this->dispatch('redirect-to-list');
+    }
 
     public function render()
     {
