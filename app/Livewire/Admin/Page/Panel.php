@@ -20,6 +20,9 @@ class Panel extends Component
     public $recentSales = [];
     public $selectedSale;
     public $showModal = false;
+    public $showJetModal = false;
+    public $showPaid = false;
+    public $registerId;
 
     public $stores;
     public $store;
@@ -63,5 +66,51 @@ class Panel extends Component
     public function changeStore($id)
     {
         $this->store = Store::where('id', $id)->first();
+    }
+
+    //DELETE
+    public function showModalDelete($id)
+    {
+        $this->showJetModal = true;
+        if (isset($id)) {
+            $this->registerId = $id;
+        } else {
+            $this->registerId = '';
+        }
+    }
+    public function delete($id)
+    {
+        $data = Sales::find($id);
+        $data->delete();
+
+        $this->openAlert('success', 'Registro excluido com sucesso.');
+
+        $this->showJetModal = false;
+    }
+    //DELETE
+    public function showModalPaid($id)
+    {
+        $this->showPaid = true;
+        if (isset($id)) {
+            $this->registerId = $id;
+        } else {
+            $this->registerId = '';
+        }
+    }
+    public function paid($id)
+    {
+        $data = Sales::find($id);
+        $data->status = 1;
+        $data->save();
+
+        $this->openAlert('success', 'Pagamento informado com sucesso.');
+
+        $this->showPaid = false;
+    }
+    //OPEN MESSAGE
+    //pega o status do registro
+    public function openAlert($status, $msg)
+    {
+        $this->dispatch('openAlert', $status, $msg);
     }
 }

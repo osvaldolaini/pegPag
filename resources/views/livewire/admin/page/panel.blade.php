@@ -112,14 +112,34 @@
                                                         </span>
                                                     </td>
                                                     <td class="px-4 py-2 text-center">
-                                                        <button wire:click="paid({{ $sale->id }})"
-                                                            class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition">
-                                                            <x-svg.dollar class="ml-2 size-6"></x-svg.dollar>
-                                                        </button>
-                                                        <button wire:click="showSaleDetails({{ $sale->id }})"
-                                                            class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 transition">
-                                                            <x-svg.eyes class="ml-2 size-6"></x-svg.eyes>
-                                                        </button>
+                                                        @if ($sale->status == 0)
+                                                            <div class="p-0 tooltip tooltip-top" data-tip="Pagar">
+
+                                                                <button wire:click="showModalPaid({{ $sale->id }})"
+                                                                    class="px-3 py-2 transition-colors duration-200 rounded-sm  hover:bg-green-500 hover:text-white">
+                                                                    <x-svg.dollar class="w-6 h-6"></x-svg.dollar>
+                                                                </button>
+                                                            </div>
+                                                        @endif
+                                                        <div class="p-0 tooltip tooltip-top" data-tip="Detalhes">
+
+                                                            <button wire:click="showSaleDetails({{ $sale->id }})"
+                                                                class="px-3 py-2 transition-colors duration-200 rounded-sm  hover:bg-indigo-700 hover:text-white">
+                                                                <x-svg.eyes class="w-6 h-6"></x-svg.eyes>
+                                                            </button>
+                                                        </div>
+                                                        <div class="p-0 tooltip tooltip-top" data-tip="Apagar">
+                                                            <button wire:click="showModalDelete({{ $sale->id }})"
+                                                                class="px-3 py-2 -ml-1 transition-colors duration-200 rounded-sm dark:hover:bg-red-500 hover:bg-red-500 hover:text-white">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6"
+                                                                    fill="none" viewBox="0 0 24 24"
+                                                                    stroke="currentColor" stroke-width="2">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                                                    </path>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @empty
@@ -181,6 +201,47 @@
 
         </x-slot>
     </x-layouts.admin.tabs.tabs>
+    {{-- MODAL DELETE --}}
+    <x-layouts.admin.confirmation-modal wire:model="showJetModal">
+        <x-slot name="title">
+            Excluir registro
+        </x-slot>
+
+        <x-slot name="content">
+            <h2 class="h2">Deseja realmente excluir o registro?</h2>
+            <p>Não será possível reverter esta ação!</p>
+        </x-slot>
+
+        <x-slot name="footer">
+            <button class="ml-2 btn btn-active" wire:click="$toggle('showJetModal')" wire:loading.attr="disabled">
+                Cancelar
+            </button>
+
+            <button class="ml-2 btn btn-error" wire:click="delete({{ $registerId }})" wire:loading.attr="disabled">
+                Apagar registro
+            </button>
+        </x-slot>
+    </x-layouts.admin.confirmation-modal>
+    {{-- MODAL PAGAR --}}
+    <x-layouts.admin.confirmation-modal wire:model="showPaid">
+        <x-slot name="title">
+            Pagar
+        </x-slot>
+
+        <x-slot name="content">
+            <h2 class="h2">Deseja realmente informar o pagamento?</h2>
+        </x-slot>
+
+        <x-slot name="footer">
+            <button class="ml-2 btn btn-active" wire:click="$toggle('showPaid')" wire:loading.attr="disabled">
+                Cancelar
+            </button>
+
+            <button class="ml-2 btn btn-success" wire:click="paid({{ $registerId }})" wire:loading.attr="disabled">
+                Pagar
+            </button>
+        </x-slot>
+    </x-layouts.admin.confirmation-modal>
 
 
 
