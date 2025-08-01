@@ -47,7 +47,7 @@ class Checkout extends Component
                 'cpf'   => $this->cpf,
                 'phone' => $this->phone,
             ]),
-            'pix_code'  => $this->description,
+            'pix_code'  => 'TX' . uniqid(),
             'value'     => $total
         ]);
 
