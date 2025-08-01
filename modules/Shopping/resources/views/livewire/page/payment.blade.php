@@ -49,6 +49,12 @@
                 @endforeach
             </ul>
             <div class="mt-2 font-semibold">Total: R$ {{ number_format($total, 2, ',', '.') }}</div>
+            <div class="flex justify-end">
+                <button wire:click='goHome' class="flex btn text-lg py-2 justify-end">
+                    Sair X
+                </button>
+            </div>
+
         </div>
     @else
         {{-- Mensagem de sucesso --}}

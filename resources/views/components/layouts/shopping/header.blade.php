@@ -17,12 +17,15 @@
                 </a>
             </div>
         @else
-            <div>
-                <a href="{{ url('/produtos') }}" class="flex btn btn-soft btn-active">
-                    <x-svg.back class="size-[1.8em]"></x-svg.back>
-                    Voltar à loja
-                </a>
-            </div>
+            @if (!Request::is('pagar*'))
+                <div>
+                    <a href="{{ url('/produtos') }}" class="flex btn btn-soft btn-active">
+                        <x-svg.back class="size-[1.8em]"></x-svg.back>
+                        Voltar à loja
+                    </a>
+                </div>
+            @endif
+
         @endif
     </div>
 

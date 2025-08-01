@@ -112,6 +112,10 @@
                                                         </span>
                                                     </td>
                                                     <td class="px-4 py-2 text-center">
+                                                        <button wire:click="paid({{ $sale->id }})"
+                                                            class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition">
+                                                            <x-svg.dollar class="ml-2 size-6"></x-svg.dollar>
+                                                        </button>
                                                         <button wire:click="showSaleDetails({{ $sale->id }})"
                                                             class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 transition">
                                                             <x-svg.eyes class="ml-2 size-6"></x-svg.eyes>
