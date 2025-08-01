@@ -3,6 +3,7 @@
 namespace Modules\Shopping\App\Livewire\Page;
 
 use Livewire\Component;
+use Modules\Shopping\App\Models\Sales;
 
 class Checkout extends Component
 {
@@ -32,7 +33,20 @@ class Checkout extends Component
             'checkout.phone' => $this->phone,
         ]);
 
-        return redirect()->route('payment');
+        $sale = Sales::create([
+            'status'    => 1,
+            'store_id'  => session('store.id'),
+            'items'     => json_encode($this->cart),
+            'customer'  => json_encode([
+                'name'  => $this->name,
+                'cpf'   => $this->cpf,
+                'phone' => $this->phone,
+            ]),
+            'pix_code'  => $this->description,
+            'value'     => $this->total
+        ]);
+
+        return redirect()->route('payment', $sale);
     }
 
     public function render()

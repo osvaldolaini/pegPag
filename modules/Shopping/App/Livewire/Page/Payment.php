@@ -20,14 +20,16 @@ class Payment extends Component
     public $cpf;
     public $phone;
     public $total = 0;
+    public $sale;
 
     public $paid = false;
     public string $pixQrCode = '';
 
     public $description;
 
-    public function mount()
+    public function mount(Sales $sale)
     {
+        $this->sale = $sale;
         $this->description = 'TX' . uniqid();
         $this->cart = session('cart', []);
 
@@ -44,18 +46,9 @@ class Payment extends Component
     public function simulatePayment()
     {
         $this->paid = true;
-        $sale = Sales::create([
-            'status'    => 1,
-            'store_id'  => session('store.id'),
-            'items'     => json_encode($this->cart),
-            'customer'  => json_encode([
-                'name'  => $this->name,
-                'cpf'   => $this->cpf,
-                'phone' => $this->phone,
-            ]),
-            'pix_code'  => $this->description,
-            'value'     => $this->total
-        ]);
+        $this->sale->status = 0;
+        $this->sale->save();
+
         session()->forget(['cart', 'checkout.name', 'checkout.cpf', 'checkout.phone']);
         // dd($sale);
         // Redirecionar após um pequeno delay para visualização da animação

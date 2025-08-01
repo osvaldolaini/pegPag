@@ -9,7 +9,7 @@ use Modules\Shopping\App\Livewire\Page\Payment;
 
 // Página pública
 Route::middleware(['web'])->group(function () {
-    Route::get('/pagar', Payment::class)
+    Route::get('/pagar/{sale}', Payment::class)
         ->name('payment');
 
     Route::get('/carrinho', Cart::class)
