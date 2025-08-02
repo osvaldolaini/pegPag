@@ -4,9 +4,10 @@
     <div class="dock dock-xl bg-neutral text-neutral-content ">
 
         @foreach ($stores as $item)
-            <button wire:click='changeStore({{ $item->id }})' class="rounded-box shadow-md">
+            <button wire:click='changeStore({{ $item->id }})' class="rounded-box shadow-lg ">
                 @if ($item->logo_path)
-                    <img src="{{ url('storage/stores/' . $item->id . '/' . $item->code_image . '_list.png') }}"
+                    <img class="h-12"
+                        src="{{ url('storage/stores/' . $item->id . '/' . $item->code_image . '_list.png') }}"
                         alt="{{ $item->title }}">
                 @else
                     <x-layouts.admin.application-logo width="h-12"></x-layouts.admin.application-logo>
