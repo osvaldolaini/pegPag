@@ -16,7 +16,7 @@
     <meta property="og:image" content="{{ $meta_image ?? asset('images/seo-default.jpg') }}" />
 
     <link rel="manifest" href="{{ asset('manifest.json') }}">
-    <meta name="theme-color" content="#0d6efd">
+    <meta name="theme-color" content="#ffffff">
     <link rel="apple-touch-icon" href="{{ asset('favicons/pwa-logos/icon-192x192.png') }}">
     <meta name="mobile-web-app-capable" content="yes">
 
