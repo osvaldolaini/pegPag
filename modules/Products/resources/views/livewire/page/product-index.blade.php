@@ -1,24 +1,15 @@
 <div>
     {{-- @livewire('message-alert') --}}
 
-    <div class="dock dock-lg bg-neutral text-neutral-content">
+    <div class="dock dock-xl bg-neutral text-neutral-content ">
 
         @foreach ($stores as $item)
             <button wire:click='changeStore({{ $item->id }})'>
                 @if ($item->logo_path)
-                    {{-- <div class="avatar"> --}}
-                    <div class="w-32">
-                        <!-- Avatar pequeno -->
-                        <img src="{{ url('storage/stores/' . $item->id . '/' . $item->code_image . '_list.png') }}"
-                            alt="{{ $item->title }}">
-                    </div>
-                    {{-- </div> --}}
+                    <img src="{{ url('storage/stores/' . $item->id . '/' . $item->code_image . '_list.png') }}"
+                        alt="{{ $item->title }}">
                 @else
-                    {{-- <div class="avatar"> --}}
-                    <div class="w-32">
-                        <x-layouts.admin.application-logo width="h-12"></x-layouts.admin.application-logo>
-                    </div>
-                    {{-- </div> --}}
+                    <x-layouts.admin.application-logo width="h-12"></x-layouts.admin.application-logo>
                 @endif
                 <span class="dock-label">{{ $item->title }}</span>
             </button>

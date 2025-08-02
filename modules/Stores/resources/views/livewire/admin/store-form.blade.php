@@ -142,7 +142,7 @@
                 @if ($id)
                     <div id="tab2" x-show="activeTab === '#tab2'">
                         <div class="col-span-full sm:col-span-3">
-                            <label for="acronym">Foto (300 x 400)</label>
+                            <label for="acronym">Foto (500 x 500)</label>
                             @if ($uploadimage)
                                 <img src="{{ $uploadimage->temporaryUrl() }}">
                                 <div class="flex justify-between space-x-1">
