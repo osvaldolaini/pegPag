@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="cupcake">
 
 <head>
     <meta charset="UTF-8" />
@@ -19,6 +19,8 @@
     <meta name="theme-color" content="#0d6efd">
     <link rel="apple-touch-icon" href="{{ asset('favicons/pwa-logos/icon-192x192.png') }}">
     <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="viewport" content="viewport-fit=cover">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles

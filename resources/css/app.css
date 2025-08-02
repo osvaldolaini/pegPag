@@ -65,4 +65,6 @@ select:focus[data-flux-control] {
     @apply size-4;
 } */
 
-@plugin "daisyui";
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark, cupcake,coffee;
+  }
