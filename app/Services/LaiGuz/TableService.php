@@ -19,7 +19,7 @@ class TableService
     protected ?string $searchTerm = null;
     protected array $customSearchMapping = []; // Renomeado
     protected string $activeColumn = 'active';
-    protected bool $includeInactive = false; // Melhor nome para 'seeExcluded'
+    protected bool $includeInactive = true; // Melhor nome para 'seeExcluded'
 
     /**
      * Define o modelo Eloquent a ser consultado.
