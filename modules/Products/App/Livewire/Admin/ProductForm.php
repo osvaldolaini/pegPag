@@ -113,7 +113,7 @@ class ProductForm extends Component
     {
         if ($property === 'uploadimage') {
             $this->validate([
-                'uploadimage' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+                'uploadimage' => ['nullable', 'mimes:jpg,jpeg,png'],
             ]);
 
             $directory = 'products/' . $this->product->id;
