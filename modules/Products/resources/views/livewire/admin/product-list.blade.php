@@ -104,7 +104,7 @@
                 Cancelar
             </button>
 
-            <button class="ml-2 btn btn-error" wire:click="delete({{ $registerId }})" wire:loading.attr="disabled">
+            <button class="ml-2 btn btn-error" wire:click="delete({{ $id }})" wire:loading.attr="disabled">
                 Apagar registro
             </button>
         </x-slot>
