@@ -153,11 +153,13 @@ class TableService
         $query = app($this->model)->query();
 
         // Aplicar filtro de ativo/inativo
-        if ($this->includeInactive) {
-            $query->where($this->activeColumn, '<=', 1);
-        } else {
-            $query->where($this->activeColumn, 1);
-        }
+        // if ($this->includeInactive) {
+        //     $query->where($this->activeColumn, '<=', 1);
+        // } else {
+        //     $query->where($this->activeColumn, 1);
+        // }
+
+        $query->where($this->activeColumn, '<=', 1);
 
         // Aplicar condições WHERE
         foreach ($this->whereConditions as $key => $value) {
