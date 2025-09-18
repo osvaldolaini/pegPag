@@ -2,6 +2,7 @@
 
 namespace Modules\Products\App\Livewire\Admin;
 
+use App\View\Components\Svg\Products;
 use Modules\Products\App\Models\Product;
 
 use Livewire\Component;
@@ -60,8 +61,20 @@ class ProductForm extends Component
     public function save()
     {
         $id = $this->real_save();
+
         if ($id) {
-            redirect()->route($this->route . '-edit', $id)->with('success', 'Registro criado com sucesso.');
+            $product = Product::find($id);
+            if ($product->getAttributes()) {
+                $this->product      = $product;
+                $this->id           = $product->id;
+                $this->title        = $product->title;
+                $this->value        = $product->value_view;
+                $this->code         = $product->code;
+                $this->logo_path    = $product->logo_path;
+                if ($this->logo_path) {
+                    $this->photo        = $product->id . '/' . $product->logo_path;
+                }
+            }
         }
     }
     public function save_out()
