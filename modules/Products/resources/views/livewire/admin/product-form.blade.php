@@ -9,7 +9,7 @@
 
                     </x-slot>
                     <x-slot name="title">{{ $breadcrumb }}</x-slot>
-                    @livewire('message-alert')
+                    {{-- @livewire('message-alert') --}}
                 </x-layouts.admin.tabs.tabs-link>
                 @if ($id)
                     <x-layouts.admin.tabs.tabs-link tab="tab2">
