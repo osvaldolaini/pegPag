@@ -44,7 +44,7 @@ class UserForm extends Component
         // dd($user);
         if ($user->getAttributes()) {
             // dd($user->people);
-            $this->people = $user->people;
+            // $this->people = $user->people;
             $this->id               = $user->id;
             $this->name             = $user->name;
             $this->email            = $user->email;
@@ -56,12 +56,12 @@ class UserForm extends Component
             $this->breadcrumb .= $user->name;
 
             $this->name = $user->name;
-            if ($user->people) {
-                $this->nick = $user->people->nick;
-                $this->posto_grad = $user->people->posto_grad;
-                $this->function = $user->people->function;
-                $this->sex = $user->people->sex;
-            }
+            // if ($user->people) {
+            //     $this->nick = $user->people->nick;
+            //     $this->posto_grad = $user->people->posto_grad;
+            //     $this->function = $user->people->function;
+            //     $this->sex = $user->people->sex;
+            // }
         }
         // $this->groups = UserGroups::cases();
 
@@ -122,12 +122,12 @@ class UserForm extends Component
                     'password'  => Hash::make($this->password),
                 ]);
             }
-            $this->people->name         = $this->name;
-            $this->people->nick         = $this->nick;
-            $this->people->posto_grad   = $this->posto_grad;
-            $this->people->function     = $this->function;
-            $this->people->sex          = $this->sex;
-            $this->people->save();
+            // $this->people->name         = $this->name;
+            // $this->people->nick         = $this->nick;
+            // $this->people->posto_grad   = $this->posto_grad;
+            // $this->people->function     = $this->function;
+            // $this->people->sex          = $this->sex;
+            // $this->people->save();
             $id = false;
         } else {
             $user = User::create([
